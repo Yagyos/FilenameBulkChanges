@@ -22,9 +22,18 @@ Partial Class FilenameBulkChanges
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(141, 24)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "ChangeFolder"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ListBox1
         '
@@ -33,22 +42,13 @@ Partial Class FilenameBulkChanges
         Me.ListBox1.Location = New System.Drawing.Point(12, 42)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(196, 196)
-        Me.ListBox1.TabIndex = 0
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(141, 24)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "ChangeFolder"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ListBox1.TabIndex = 2
         '
         'FilenameBulkChanges
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(654, 398)
+        Me.ClientSize = New System.Drawing.Size(421, 279)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ListBox1)
         Me.Name = "FilenameBulkChanges"
@@ -56,7 +56,7 @@ Partial Class FilenameBulkChanges
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
 
 End Class

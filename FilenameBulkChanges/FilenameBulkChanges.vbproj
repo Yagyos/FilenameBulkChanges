@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{17E30DA1-F3EE-48A4-9133-746AD799775C}</ProjectGuid>
+    <ProjectGuid>{3764CE71-F225-495F-AF65-B7303B431387}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <StartupObject>FilenameBulkChanges.My.MyApplication</StartupObject>
     <RootNamespace>FilenameBulkChanges</RootNamespace>
