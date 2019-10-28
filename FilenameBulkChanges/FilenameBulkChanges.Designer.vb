@@ -34,6 +34,8 @@ Partial Class FilenameBulkChanges
         Me.TxtStepNo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BtnGo = New System.Windows.Forms.Button()
+        Me.TxtTempName = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BtnSelect
@@ -140,11 +142,30 @@ Partial Class FilenameBulkChanges
         Me.BtnGo.Text = "Go"
         Me.BtnGo.UseVisualStyleBackColor = True
         '
+        'TxtTempName
+        '
+        Me.TxtTempName.Location = New System.Drawing.Point(261, 160)
+        Me.TxtTempName.Name = "TxtTempName"
+        Me.TxtTempName.Size = New System.Drawing.Size(137, 19)
+        Me.TxtTempName.TabIndex = 15
+        Me.TxtTempName.Text = "TMP"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(214, 145)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(62, 12)
+        Me.Label4.TabIndex = 14
+        Me.Label4.Text = "TempName"
+        '
         'FilenameBulkChanges
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(421, 279)
+        Me.Controls.Add(Me.TxtTempName)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnGo)
         Me.Controls.Add(Me.TxtStepNo)
         Me.Controls.Add(Me.Label3)
@@ -175,5 +196,7 @@ Partial Class FilenameBulkChanges
     Friend WithEvents TxtStepNo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents BtnGo As System.Windows.Forms.Button
+    Friend WithEvents TxtTempName As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 
 End Class

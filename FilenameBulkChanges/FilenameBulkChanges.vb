@@ -6,6 +6,7 @@
     End Structure
     Public DatFBCList() As FBCList_Str
     Public DatFBCPathNm As String
+    Public DatTempName As String
 
     'フォルダ選択
     '[Select]実行
@@ -85,6 +86,7 @@
     Public Sub BtnReacquire_Core(ByRef WrkFBCList() As FBCList_Str)
 
         DatFBCPathNm = FolderNameCheck(FolderPathName.Text)
+        DatTempName = TxtTempName.Text
 
         On Error Resume Next
         Dim WrkFileList As String() = System.IO.Directory.GetFiles(DatFBCPathNm)
@@ -159,9 +161,9 @@
 
     '[Go]実行
     Private Sub BtnGo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGo.Click
-        Call BtnGo_Exec(DatFBCList)
+        Call BtnGo_Exec(DatFBCList, DatFBCPathNm, DatTempName)
     End Sub
-    Public Sub BtnGo_Exec(ByVal WrkFBCList() As FBCList_Str)
+    Public Sub BtnGo_Exec(ByVal WrkFBCList() As FBCList_Str, ByVal WrkFBCPathNm As String, ByVal WrkTempName As String)
 
         If WrkFBCList Is Nothing Then
             Call MessageBox.Show("対象データがありません。" & vbCrLf & "There is no target data.", "確認 Check", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -174,7 +176,7 @@
 
         Dim ErrMsg As String = ""
 
-        If BtnGo_Core(WrkFBCList, ErrMsg) = True Then
+        If BtnGo_Core(WrkFBCList, WrkFBCPathNm, WrkTempName, ErrMsg) = True Then
             Call MessageBox.Show("完了しました" & vbCrLf & "Completed.", "完了 Complete", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             If MessageBox.Show("完了しましたが、エラーが発生しています。" & vbCrLf & "Completed with errors." & vbCrLf & vbCrLf _
@@ -198,24 +200,54 @@
         End If
 
     End Sub
-    Public Function BtnGo_Core(ByVal WrkFBCList() As FBCList_Str, ByRef ErrMsg As String) As Boolean
+    Public Function BtnGo_Core(ByVal WrkFBCList() As FBCList_Str, ByVal WrkFBCPathNm As String, ByVal WrkTempName As String, ByRef ErrMsg As String) As Boolean
 
         Dim RetCode As Boolean = True
 
         For WrkIdx As Integer = 0 To WrkFBCList.Count - 1
 
-            Try
-
-                'ファイル名の変更
-                System.IO.File.Move(DatFBCPathNm & "\" & WrkFBCList(WrkIdx).SrcFileName _
-                                  , DatFBCPathNm & "\" & WrkFBCList(WrkIdx).DstFileName)
-
-            Catch ex As Exception
-                ErrMsg = ErrMsg & ex.Message & vbCrLf
+            '一時ファイル名にファイル名変更
+            If BtnGo_Core_ReNM(WrkFBCPathNm & "\" & WrkFBCList(WrkIdx).SrcFileName _
+                             , WrkFBCPathNm & "\" & WrkFBCList(WrkIdx).DstFileName & WrkTempName _
+                             , ErrMsg) = False Then
                 RetCode = False
-            End Try
+            End If
 
         Next
+
+        If WrkTempName = "" Then
+            '一時ファイル名が指定されていない場合
+
+            'そのまま終了
+            Return RetCode
+        End If
+
+        '一時ファイル名から正規ファイル名に変更
+        For WrkIdx As Integer = 0 To WrkFBCList.Count - 1
+
+            If BtnGo_Core_ReNM(WrkFBCPathNm & "\" & WrkFBCList(WrkIdx).DstFileName & WrkTempName _
+                             , WrkFBCPathNm & "\" & WrkFBCList(WrkIdx).DstFileName _
+                             , ErrMsg) = False Then
+                RetCode = False
+            End If
+
+        Next
+
+        Return RetCode
+    End Function
+    Public Function BtnGo_Core_ReNM(ByVal WrkSrcFile As String, ByVal WrkDstFile As String, ByRef ErrMsg As String) As Boolean
+
+        Dim RetCode As Boolean = True
+
+        Try
+
+            'ファイル名の変更
+            System.IO.File.Move(WrkSrcFile, WrkDstFile)
+
+        Catch ex As Exception
+            ErrMsg = ErrMsg & WrkSrcFile & vbTab & "→" & vbTab & WrkDstFile & vbTab & ex.Message & vbCrLf
+            RetCode = False
+        End Try
 
         Return RetCode
     End Function
