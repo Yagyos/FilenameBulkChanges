@@ -36,6 +36,7 @@ Partial Class FilenameBulkChanges
         Me.BtnGo = New System.Windows.Forms.Button()
         Me.TxtTempName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.ChkReverse = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'BtnSelect
@@ -54,7 +55,7 @@ Partial Class FilenameBulkChanges
         Me.FilenameList.ItemHeight = 12
         Me.FilenameList.Location = New System.Drawing.Point(12, 42)
         Me.FilenameList.Name = "FilenameList"
-        Me.FilenameList.Size = New System.Drawing.Size(196, 196)
+        Me.FilenameList.Size = New System.Drawing.Size(196, 220)
         Me.FilenameList.TabIndex = 2
         '
         'FolderPathName
@@ -100,7 +101,7 @@ Partial Class FilenameBulkChanges
         '
         'BtnRenum
         '
-        Me.BtnRenum.Location = New System.Drawing.Point(261, 117)
+        Me.BtnRenum.Location = New System.Drawing.Point(261, 139)
         Me.BtnRenum.Name = "BtnRenum"
         Me.BtnRenum.Size = New System.Drawing.Size(66, 19)
         Me.BtnRenum.TabIndex = 9
@@ -135,7 +136,7 @@ Partial Class FilenameBulkChanges
         '
         'BtnGo
         '
-        Me.BtnGo.Location = New System.Drawing.Point(216, 191)
+        Me.BtnGo.Location = New System.Drawing.Point(214, 207)
         Me.BtnGo.Name = "BtnGo"
         Me.BtnGo.Size = New System.Drawing.Size(182, 47)
         Me.BtnGo.TabIndex = 13
@@ -144,7 +145,7 @@ Partial Class FilenameBulkChanges
         '
         'TxtTempName
         '
-        Me.TxtTempName.Location = New System.Drawing.Point(261, 160)
+        Me.TxtTempName.Location = New System.Drawing.Point(261, 182)
         Me.TxtTempName.Name = "TxtTempName"
         Me.TxtTempName.Size = New System.Drawing.Size(137, 19)
         Me.TxtTempName.TabIndex = 15
@@ -153,17 +154,28 @@ Partial Class FilenameBulkChanges
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(214, 145)
+        Me.Label4.Location = New System.Drawing.Point(214, 167)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(62, 12)
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "TempName"
+        '
+        'ChkReverse
+        '
+        Me.ChkReverse.AutoSize = True
+        Me.ChkReverse.Location = New System.Drawing.Point(216, 117)
+        Me.ChkReverse.Name = "ChkReverse"
+        Me.ChkReverse.Size = New System.Drawing.Size(66, 16)
+        Me.ChkReverse.TabIndex = 16
+        Me.ChkReverse.Text = "Reverse"
+        Me.ChkReverse.UseVisualStyleBackColor = True
         '
         'FilenameBulkChanges
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(421, 279)
+        Me.Controls.Add(Me.ChkReverse)
         Me.Controls.Add(Me.TxtTempName)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnGo)
@@ -198,5 +210,6 @@ Partial Class FilenameBulkChanges
     Friend WithEvents BtnGo As System.Windows.Forms.Button
     Friend WithEvents TxtTempName As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents ChkReverse As System.Windows.Forms.CheckBox
 
 End Class
